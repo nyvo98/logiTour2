@@ -1,0 +1,19 @@
+.modal-container {
+z-index: 10000000000000;
+}
+
+.modal-wrapper{
+    .ant-modal-content{
+        border-radius: 0.6rem !important;
+    }
+    .ant-modal-close{
+        top: 4rem;
+        right: 4rem;
+    }
+}
+
+@media (max-width: 768px){
+    .ant-modal-content .ant-modal-body{
+        // padding: 2.4rem 0
+    }
+}

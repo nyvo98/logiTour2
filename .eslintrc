@@ -1,0 +1,47 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "standard",
+    "standard-react"
+  ],
+  "env": {
+    "es6": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "react/jsx-handler-names": [
+      "error",
+      {
+        "eventHandlerPrefix": "(handle|on)",
+        "eventHandlerPropPrefix": "(handle|on)"
+      }
+    ],
+    "no-async-promise-executor": 0,
+    "no-undef": "error",
+    "no-unused-vars": "error",
+    "react/prop-types": 0,
+    "no-console": 0,
+    "react/sort-comp": 2,
+    "react/no-string-refs": 0,
+    "indent": [
+      2,
+      2
+    ]
+  },
+  "globals": {
+    "fetch": true,
+    "enquire": true,
+    "FontFaceObserver": true,
+    "imagesloaded": true,
+    "Modernizr": true
+  }
+}

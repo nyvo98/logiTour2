@@ -1,0 +1,13 @@
+.booking-empty-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 9rem 0;
+  background-color: #ffffff;
+  border: 1px solid #edf0f1;
+  border-radius: 0.6rem;
+  &__button {
+    width: 220px;
+  }
+}

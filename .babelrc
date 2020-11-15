@@ -1,0 +1,36 @@
+{
+  "presets": [
+    "@babel/preset-react",
+    [
+      "next/babel"
+    ]
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./"
+        ],
+        "alias": {
+          "common": "./common",
+          "controller": "./controller",
+          "static": "./static",
+          "assets": "./assets",
+          "pages": "./pages"
+        }
+      }
+    ],
+    [
+      "@babel/plugin-transform-arrow-functions"
+    ],
+    "@babel/plugin-syntax-dynamic-import"
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        "transform-remove-console"
+      ]
+    }
+  }
+}

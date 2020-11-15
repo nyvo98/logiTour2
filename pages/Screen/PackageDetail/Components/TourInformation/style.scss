@@ -1,0 +1,97 @@
+@import '~react-image-gallery/styles/scss/image-gallery.scss';
+
+.tour-information-container {
+  .image-gallery-left-nav .image-gallery-svg,
+  .image-gallery-right-nav .image-gallery-svg {
+    height: 3.5rem;
+    opacity: 0.5;
+    &:hover{
+      opacity: 1;
+      box-shadow: none !important;
+    }
+  }
+  .image-gallery-icon{
+    color: #fff !important;
+    opacity: 0.5 !important;
+    transition: all ease 0.5s;
+    &:hover{
+      color: #fff !important;
+      opacity: 1 !important;
+    }
+  }
+  
+  .gallery-video-item{
+
+    .dim{
+      position: absolute;
+      left:0;
+      top:0;
+      right:0;
+      bottom:0;
+      background-color: rgba(120, 120, 120, 0.3);
+    }
+
+    &__play-btn{
+      position: absolute;
+      left:0;
+      top:0;
+      right:0;
+      bottom:0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+
+  .image-gallery-thumbnails {
+    padding: 0.2rem 0;
+  }
+
+  .image-gallery-thumbnail {
+    border: none;
+    filter: grayscale(1);
+    &.active {
+      filter: unset;
+    }
+  }
+  .image-gallery-thumbnails .image-gallery-thumbnails-container{
+    text-align: left;
+  }
+
+  .tour-detail {
+    margin: 10rem 0 6.5rem 0;
+    &__box {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+
+      img {
+        // max-width: 40px;
+        height: 4rem;
+        width: 4rem;
+        margin: 0 auto 3.5rem auto;
+      }
+
+      h6 {
+        font-size: 1.2rem;
+        font-weight: normal;
+        margin: 0;
+        color: #666666;
+      }
+
+      h4 {
+        font-size: 2rem;
+        &.fz--18{
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+  .tour-description {
+    margin: 6.5rem 0 20rem 0;
+  }
+
+}

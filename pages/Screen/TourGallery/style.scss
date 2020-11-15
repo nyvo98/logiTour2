@@ -1,0 +1,32 @@
+.tour-gallery-container {
+  .ant-pagination {
+    .ant-pagination-item,.ant-pagination-prev,.ant-pagination-next {
+      border: none;
+      font-size: 1.3rem;
+      &-active{
+          background-color: #f6f8fb;
+          border: 0.1rem solid #edf0f1;
+          a{
+              color: #262626;
+          }
+      }
+      a{
+        color: #848484;
+        border:none
+      }
+    }
+  }
+  .ant-input-search-enter-button input{
+      border-right: 1px solid #d9d9d9;
+      border-radius: 0.4rem;
+      font-size: 1.5rem;
+      height: 4.8rem;
+      
+  }
+  .ant-input-search-enter-button input + .ant-input-group-addon .ant-input-search-button{
+      border-radius: 0.4rem;
+      margin-left: 0.8rem;
+      height: 4.8rem;
+      width: 4.8rem;
+  }
+}

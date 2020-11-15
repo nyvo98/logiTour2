@@ -1,0 +1,22 @@
+const routes = require('next-routes')
+
+module.exports = routes()
+  // sample route
+  .add('/my-page/:page?', 'Screen/MyPage')
+  .add('/gallery', 'Screen/TourGallery')
+  .add('/gallery-detail/:id', 'Screen/TourGalleryDetail')
+  .add('/package-list', 'Screen/PackageList')
+  .add('/package-detail/:id', 'Screen/PackageDetail')
+  // .add('/sample', 'Screen/SampleScreen')
+  .add('/no-accessible', 'Screen/NoAccessible')
+  .add('/check-url-available', 'Screen/CheckUrlAvailable')
+  .add('/check-url-available-done', 'Screen/CheckUrlAvailableDone')
+  .add('/about-us', 'Screen/AboutUs')
+  .add('/terms', 'Screen/Term')
+  .add('/my-information', 'Screen/UserInformation')
+  // main routes
+  .add('/', 'Screen/HomeScreen')
+  .add('/en', 'Screen/HomeScreen')
+  .add('/ja', 'Screen/HomeScreen')
+  .add('/cn', 'Screen/HomeScreen')
+  .add('/error', 'pages/_error')

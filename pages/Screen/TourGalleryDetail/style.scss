@@ -1,0 +1,33 @@
+.tour-gallery-detail-container{
+    .gallery-detail{
+        &__meta{
+            &--by{
+                color: #262626;
+            }
+            &--date{
+                color: #848484;
+            }
+        }
+
+        &__post{
+            font-size: 1.4rem;
+            line-height: 1.86;
+            img{
+                margin: 2.5rem auto;
+                max-width: 100%;
+                display: block;
+            }
+        }
+        &__return{
+            text-align: right;
+            line-height: 2.4rem;
+            > span {
+                line-height: 2.8rem;
+            }
+            .anticon{
+                color: #d0af73;
+            }
+
+        }
+    }
+}

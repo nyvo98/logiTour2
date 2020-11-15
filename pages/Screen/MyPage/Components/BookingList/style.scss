@@ -1,0 +1,44 @@
+.booking-history-list {
+  &__item {
+    cursor: pointer;
+    background-color: #ffffff;
+    padding: 2.8rem 2.5rem;
+    border-radius: 0.6rem;
+    border: 1px solid #edf0f1;
+    margin: 1rem 0;
+    transition: 0.3s;
+
+    &:hover {
+      box-shadow: 0 24px 54px 0 rgba(125, 138, 159, 0.13);
+    }
+
+    &__date {
+      line-height: 2.2;
+      color: #848484;
+    }
+    &__title {
+      font-size: 1.8rem;
+    }
+    &--nobackground {
+      color: #b8c0cc;
+      padding: 0.4rem 2.5rem;
+      border-color: transparent;
+      background-color: transparent;
+      &:hover {
+        box-shadow: none;
+      }
+    }
+    &__more {
+      text-align: right;
+      line-height: 2.4rem;
+      font-size: 1.4rem;
+      float: right;
+      > span {
+        line-height: 2.8rem;
+      }
+      .anticon {
+        color: #d0af73;
+      }
+    }
+  }
+}

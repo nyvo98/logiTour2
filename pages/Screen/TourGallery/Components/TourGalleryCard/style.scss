@@ -1,0 +1,54 @@
+.tour-gallery-card{
+    border: solid 0.08rem #edf0f1;
+    // box-shadow: 0 0 3rem rgba(black, 0.05);
+    border-radius: 0.45rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+            &:hover{
+              span{
+                color: #d0af73;
+              }  
+                cursor: pointer;
+            }
+    &__photo{
+        height:20rem;
+        width: 100%;
+        content: " ";
+        display: block;
+        background-size: cover;
+        background-position: center center;
+        border-top-left-radius: 0.45rem;
+        border-top-right-radius: 0.45rem;
+    }
+    &__content{
+        padding: 0 3rem 3rem 3rem;
+        // flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &__title{
+        font-size: 1.8rem;
+        line-height: 3.2rem;
+        height: 6.4rem;
+        margin: 2.2rem 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+
+    }
+    &__meta{
+        font-size: 1.4rem;
+        line-height: 2.3rem;
+        text-align: right;
+        &--by{}
+        &--date{
+            color: #848484;
+            text-transform: uppercase;
+        }
+    }
+}

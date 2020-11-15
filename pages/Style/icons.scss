@@ -1,0 +1,288 @@
+.icon {
+  height: 2.1rem;
+  width: 2.1rem;
+  display: inline-block;
+  content: ' ';
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  // transition: 0.3s
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    background-size: cover;
+  }
+
+  &--14 {
+    height: 1.4rem;
+    width: 1.4rem;
+    background-size: 1.4rem 1.4rem;
+  }
+
+  &--12 {
+    width: 1.2rem;
+    background-size: 1.2rem 1.2rem;
+  }
+
+  &--127 {
+    width: 1.2rem;
+    height: 0.7rem;
+    background-size: 1.2rem 0.7rem;
+  }
+
+  &--16 {
+    height: 1.6rem;
+    width: 1.6rem;
+    background-size: 1.6rem 1.6rem;
+  }
+
+  &--space {
+    margin-top: 0.1rem;
+    margin-right: 0.7rem;
+  }
+
+  &--34 {
+    width: 3.4rem !important;
+    height: 3.4rem !important;
+    background-size: 3.4rem 3.4rem !important;
+  }
+
+  &--inline {
+    transform: translateY(0.15rem);
+  }
+
+  &--clock {
+    background-image: url(/static/Assets/Image/Icon/ic-clock.svg);
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      &.icon--primary {
+        background-image: url(/static/Assets/Image/Icon/ic-clock--primary.svg);
+      }
+      &.icon--grey {
+        background-image: url(/static/Assets/Image/Icon/ic-clock--grey.svg);
+      }
+      &.icon--hover-primary:hover {
+        background-image: url(/static/Assets/Image/Icon/ic-clock--primary.svg);
+      }
+    }
+  }
+
+  &--email {
+    background-image: url(/static/Assets/Image/Icon/at.svg);
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      &.icon--grey {
+        background-image: url(/static/Assets/Image/Icon/at--grey.svg);
+      }
+      &.icon--hover-primary:hover {
+        background-image: url(/static/Assets/Image/Icon/at--primary.svg);
+      }
+      &.icon--hover-light:hover{
+        background-image: url(/static/Assets/Image/Icon/at--light.svg);
+      }
+    }
+  }
+
+  &--telegram {
+    background-image: url(/static/Assets/Image/Icon/telegram.svg);
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      &.icon--grey {
+        background-image: url(/static/Assets/Image/Icon/telegram--grey.svg);
+      }
+      &.icon--hover-primary:hover {
+        background-image: url(/static/Assets/Image/Icon/telegram--primary.svg);
+      }
+      &.icon--hover-light:hover{
+        background-image: url(/static/Assets/Image/Icon/telegram--light.svg);
+      }
+    }
+  }
+
+  &--wechat {
+    background-image: url(/static/Assets/Image/Icon/wechat.svg);
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      &.icon--grey {
+        background-image: url(/static/Assets/Image/Icon/wechat--grey.svg);
+      }
+      &.icon--hover-primary:hover {
+        background-image: url(/static/Assets/Image/Icon/wechat--primary.svg);
+      }
+      &.icon--hover-light:hover{
+        background-image: url(/static/Assets/Image/Icon/wechat--light.svg);
+      }      
+    }
+  }
+
+  &--edit {
+    background-image: url(/static/Assets/Image/Icon/ic-edit.svg);
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      &.icon--light {
+        background-image: url(/static/Assets/Image/Icon/ic-edit--light.svg);
+      }
+    }
+  }
+
+  &--destination {
+    background-image: url(/static/Assets/Image/Icon/ic-detail-bed.svg);
+  }
+
+  &--address {
+    background-image: url(/static/Assets/Image/Icon/ic-detail-map.svg);
+  }
+
+  &--phone {
+    background-image: url(/static/Assets/Image/Icon/ic-detail-phone.svg);
+    &.icon--primary {
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        background-image: url(/static/Assets/Image/Icon/ic-detail-phone--primary.svg);
+      }
+    }
+  }
+
+  &--phone-fullfill {
+    background-image: url(/static/Assets/Image/Icon/btn-phone.svg);
+    &.icon--primary {
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        background-image: url(/static/Assets/Image/Icon/btn-phone--primary.svg);
+      }
+    }
+  }
+
+  &--lunch {
+    background-image: url(/static/Assets/Image/Icon/ic-detail-meal.svg);
+  }
+
+  &--user-info {
+    background-image: url(/static/Assets/Image/Icon/ic-user-info.svg);
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      background-image: url(/static/Assets/Image/Icon/ic-user-info--dark.svg) !important;
+    }    
+  }
+
+  &--setting-account {
+    background-image: url(/static/Assets/Image/Icon/ic-setting-account.svg);
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      background-image: url(/static/Assets/Image/Icon/ic-setting-account--dark.svg) !important;
+    }
+  }
+
+  &--envelop {
+    background-image: url(/static/Assets/Image/Icon/ic-mail.svg);
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      &.icon--primary {
+        background-image: url(/static/Assets/Image/Icon/ic-mail--primary.svg);
+      }
+      &.icon--grey {
+        background-image: url(/static/Assets/Image/Icon/ic-mail--grey.svg);
+      }
+      &.icon--hover-primary:hover {
+        background-image: url(/static/Assets/Image/Icon/ic-mail--primary.svg);
+      }
+    }
+  }
+
+  &--accord-arrow {
+    background-image: url(/static/Assets/Image/Icon/accord-arrow-n.svg);
+    &--active {
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg)
+        brightness(103%) contrast(103%);
+      transform: translateY(-50%) rotate(180deg) !important;
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+          background-image: url(/static/Assets/Image/Icon/accord-arrow-n--light.svg) !important; 
+      }
+    }
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      &.icon--light {
+        background-image: url(/static/Assets/Image/Icon/accord-arrow-n--light.svg);
+      }
+      &.icon--primary {
+        background-image: url(/static/Assets/Image/Icon/accord-arrow-n--primary.svg);
+      }
+      &.icon--grey {
+        background-image: url(/static/Assets/Image/Icon/accord-arrow-n--grey.svg);
+      }
+      &.icon--hover-primary:hover {
+        background-image: url(/static/Assets/Image/Icon/accord-arrow-n--primary.svg);
+      }
+    }
+  }
+
+  &--arrow-right {
+    background-image: url(/static/Assets/Image/Icon/page-arrow-right.svg);
+  }
+
+  &--arrow-left {
+    background-image: url(/static/Assets/Image/Icon/page-arrow-left.svg);
+  }
+
+  &--clip {
+    background-image: url(/static/Assets/Image/Icon/ic-clip-gray.svg);
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      &.icon--light {
+        background-image: url(/static/Assets/Image/Icon/ic-clip-gray--light.svg);
+      }
+    }
+  }
+
+  &--search {
+    background-image: url(/static/Assets/Image/Icon/ic-search.svg);
+  }
+
+  &--more {
+    width: 1rem;
+    height: 1rem;
+    background-image: url(/static/Assets/Image/Icon/ic-s-arw-more.svg);
+  }
+
+  &--map {
+    background-image: url(/static/Assets/Image/Icon/map.svg);
+    &.icon--primary {
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        background-image: url(/static/Assets/Image/Icon/map--primary.svg);
+      }
+    }
+  }
+
+  &--close {
+    background-image: url(/static/Assets/Image/Icon/btn-close.svg);
+  }
+
+  &--grey {
+    filter: invert(58%) sepia(7%) saturate(275%) hue-rotate(181deg)
+      brightness(90%) contrast(88%);
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &--bgray {
+    filter: invert(89%) sepia(0%) saturate(0%) hue-rotate(356deg)
+      brightness(85%) contrast(95%);
+  }
+
+  // BDBDBD
+  &--dark {
+    filter: invert(58%) sepia(7%) saturate(275%) hue-rotate(181deg)
+      brightness(90%) contrast(88%);
+  }
+
+  &--light {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg)
+      brightness(103%) contrast(103%);
+  }
+
+  &--primary {
+    filter: invert(74%) sepia(13%) saturate(1077%) hue-rotate(0deg)
+      brightness(94%) contrast(92%);
+  }
+
+  &--hover-light {
+    &:hover {
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg)
+        brightness(103%) contrast(103%);
+    }
+  }
+
+  &--hover-primary {
+    &:hover {
+      filter: invert(74%) sepia(13%) saturate(1077%) hue-rotate(0deg)
+        brightness(94%) contrast(92%);
+    }
+  }
+}

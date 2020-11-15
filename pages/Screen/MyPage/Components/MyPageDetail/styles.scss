@@ -1,0 +1,28 @@
+.my-page-detail {
+    .column2 {
+      padding-top: 13rem;
+      &_title {
+        font-size: 25px;
+        font-weight: bold;
+      }
+      &_southKorea {
+        display: flex !important;
+        justify-content: space-between;
+      }
+      &_input {
+        height: 5rem !important;
+      }
+    }
+
+    .ant-select.ant-select-lg.ant-select-single{
+      height: 5rem;
+      .ant-select-selector{
+        height: 5rem;
+        .ant-select-selection-placeholder,.ant-select-selection-item{
+          line-height: 5rem;
+          font-size: 1.4rem;
+        }
+      }
+    }
+
+  }

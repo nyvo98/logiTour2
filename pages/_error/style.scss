@@ -1,0 +1,13 @@
+@import 'pages/Style/variable.scss';
+
+.error-page-container {
+  .text-color-from-global {
+    // Instead of $text-colors-#{success}
+    color: map-get($text-colors, "success");
+  }
+
+  .background-color-from-global {
+    // Instead of $background-colors-#{warning}
+    color: map-get($background-colors, "warning");
+  }
+}

@@ -1,0 +1,24 @@
+@import "pages/Style/variable.scss";
+
+.my-label {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    padding: 0.8rem 2.5rem;
+    border-radius: 12rem;
+    color: map-get($map: $text-colors, $key: "white");
+    font-size: 1.2rem;
+    letter-spacing: 0.12rem;
+    &--black {
+        background-color: rgba(map-get($background-colors, "dark"), 0.81);
+    }
+    &--primary{
+        background-color: #d0af73
+    }
+    &--blue{
+        background-color: #6d9cf4;
+    }
+    &--outline{
+        background-color: rgba(255, 255, 255, 0.81);
+    }
+}

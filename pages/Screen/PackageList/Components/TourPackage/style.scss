@@ -1,0 +1,111 @@
+@import 'pages/Style/variable.scss';
+
+.tour-package {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  border-radius: 0.6rem;
+  background-color: map-get($background-colors, 'white') !important;
+  border: 1px solid #edf0f1;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  &__label {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    padding: 0.8rem 2.5rem;
+    background-color: rgba(map-get($background-colors, 'dark'), 0.81);
+    border-radius: 12rem;
+    color: map-get($map: $text-colors, $key: 'white');
+    font-size: 1.2rem;
+    letter-spacing: 0.12rem;
+  }
+
+  &__photo {
+      display: inline-block;
+      height: 26rem;
+      width: 100%;
+      content: " ";
+      border-top-left-radius: 0.6rem;
+      border-top-right-radius: 0.6rem;
+  }
+
+  &__main {
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__header {
+    letter-spacing: 0.18rem;
+    text-transform: uppercase;
+    line-height: 2.3rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__content{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  &__duration {
+    font-size: 1.4rem;
+  }
+
+  &__price {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+
+  &__title {
+    font-size: 2rem;
+    line-height: 3.2rem;
+    height: 6.4rem;
+    letter-spacing: 0;
+    color: #333;
+    margin: 2rem 0 1rem 0;
+    font-weight: normal !important;
+    text-transform: uppercase;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+  }
+
+
+  &__description {
+    display: -webkit-box;
+    font-size: 1.4rem;
+    letter-spacing: 0.009rem;
+    line-height: 2.6rem;
+    height: 7.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      max-height: 8rem;
+    }
+
+  }
+
+  &__footer {
+      margin: 4rem 0 0 0;
+  }
+
+  &:hover{
+    .button-container .button-content.isCard{
+      background-color: map-get($map: $main-colors, $key: 'primary');
+      color: #fff;
+    }
+  }
+}

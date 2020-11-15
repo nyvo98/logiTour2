@@ -1,0 +1,64 @@
+@import 'pages/Style/variable.scss';
+
+.select-language-container {
+
+   &:after{
+    position: absolute;
+    top:0;
+    left:50%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 8px 8px 8px;
+    border-color: transparent transparent #fff transparent;
+    transform: translate(-50%,-100%);
+   }
+
+
+  
+  .menu-flag-item.ant-menu-item {
+    line-height: 3.6rem;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 8px 1.5rem !important;
+    color: #c5c5c5;
+
+    img {
+      width: 2.5rem;
+    }
+
+    &:first-child {
+      border-top-left-radius: 1.2rem;
+      border-top-right-radius: 1.2rem;
+    }
+    &:last-child {
+      border-bottom-left-radius: 1.2rem;
+      border-bottom-right-radius: 1.2rem;
+    }
+  }
+
+  .ant-menu-item.ant-menu-item-active,.ant-menu-item.ant-menu-item-selected {
+    background-color: #e6e6e6 !important;
+    color: #000 !important;
+  }
+
+}
+
+.dropdown-fix{
+  padding-top: 1rem !important;
+  .select-language-container:after{
+    margin-top: 1rem !important
+  }
+}
+
+.ant-dropdown-link.ant-custom {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;  
+  &:hover{
+    .icon{
+      filter: invert(74%) sepia(13%) saturate(1077%) hue-rotate(0deg)
+          brightness(94%) contrast(92%) !important;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+@import "pages/Style/variable.scss";
+
+.term-container {
+  .term-content {
+    color: map-get($text-colors, "grey");
+  }
+}

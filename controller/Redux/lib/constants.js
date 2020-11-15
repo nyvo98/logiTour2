@@ -1,0 +1,4 @@
+export const KEY_PAGE = {
+  SET_INTERNET: 'SET_INTERNET',
+  SET_HEADER: 'SET_H2EADER'
+}

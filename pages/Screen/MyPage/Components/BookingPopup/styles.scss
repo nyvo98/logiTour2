@@ -1,0 +1,48 @@
+.booking-popup {
+  padding: 6.5rem 5.6rem;
+
+  &__title{
+    text-align: center;
+    // margin: 0 0 4rem 0;
+    margin-bottom: 4rem !important;
+  }
+
+  &__name {
+    font-size: 2rem;
+  }
+
+  &-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__label {
+      font-size: 1.6rem;
+      color: #5d5d5d;
+    }
+    &__value {
+      font-size: 2.4rem;
+    }
+  }
+  
+  &-info{
+    margin-bottom: 3.5rem;
+    &-item{
+      display: flex;
+      font-size: 1.6rem;
+      &:not(:last-child){
+        margin: 0 0 1rem 0;
+      }
+      &__label{
+        margin-right: 0.4rem;
+      }
+      &__value{
+
+      }
+    }
+  }
+
+  &__button-container{
+    width:80%;
+    margin: 0 auto;
+  }
+}

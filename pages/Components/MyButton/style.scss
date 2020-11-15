@@ -1,0 +1,80 @@
+@import 'pages/Style/variable.scss';
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+
+  .button-content {
+    color: #333;
+    background-color: map-get($main-colors, 'primary');
+    color: #fff;
+    border: 1px solid map-get($main-colors, 'primary');
+    border-radius: 4px;
+    font-size: 1.7rem;
+    padding: 1.5rem 2.3rem;
+    cursor: pointer;
+    min-width: 15rem;
+    height: 4.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.15);
+    transition: 0.3s;
+
+    .icon {
+      margin: -3px 0 0 0;
+      height: 1.4rem;
+      width: 1.4rem;
+    }
+
+    &.isCard{
+      background-color: map-get($background-colors, 'white');
+      border: 1px solid map-get($main-colors, 'primary');  
+      color: #333333;
+      font-size: 1.4rem;
+      &:hover{
+        background-color: map-get($main-colors, 'primary');
+      }   
+    }
+
+    &:hover, &:active {
+      // box-shadow: 5px 6px 8px rgba(0, 0, 0, 0.15);
+      background-color: #b89453;
+      color: #fff;
+      // .icon{
+      //   filter: invert(75%) sepia(65%) saturate(261%) hue-rotate(355deg) brightness(86%) contrast(87%);
+      // }
+    }
+
+    &.disabled {
+      background-color: grayscale($color: #989197) !important;
+      opacity: 0.75;
+      border: none;
+      cursor: not-allowed;
+      &-cursor{
+        cursor: not-allowed;
+      }
+    }
+
+    &.transparent {
+      background-color: map-get($background-colors, page);
+      color: map-get($background-colors, 'button-1');
+    }
+    &.reverse {
+      background-color: map-get($main-colors, 'primary');
+      color: #fff;
+      &:hover {
+        color: map-get($main-colors, 'primary');
+        background-color: #fff;
+      }
+    }
+    &.fullWidth {
+      width: 100%;
+    }
+    &.narrow {
+      padding: 1rem !important;
+    }
+  }
+}
+
+.half-width{width: 30%;}

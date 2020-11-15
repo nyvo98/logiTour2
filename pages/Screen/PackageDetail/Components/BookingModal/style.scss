@@ -1,0 +1,83 @@
+.booking-modal-container {
+  padding: 4.1rem 1.6rem;
+  .scrollable-block {
+    max-height: 10rem;
+    overflow-y: scroll;
+    position: relative;
+
+    &::-webkit-scrollbar {
+      width: 0.5rem !important;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent !important;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #cacfd1;
+      outline: 1px solid #cacfd1;
+      height: 4rem;
+      border-radius: 120px;
+    }
+  }
+  .precaution-custom-panel {
+    .ant-collapse-header {
+      padding: 0 !important;
+      padding-bottom: 1rem !important;
+    }
+    .ant-collapse-content-box {
+      padding-left: 0;
+    }
+  }
+  .uploadField {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+
+    &__file {
+      height: 4.8rem;
+      line-height: 4.8rem;
+      flex: 1;
+      background-color: #efeff1;
+      border-radius: 0.2rem;
+      padding: 0 1.4rem;
+    }
+
+    .ant-btn {
+      width: 4.8rem;
+      height: 4.8rem;
+      margin: 0 0 0 0.8rem;
+    }
+
+    input[type='file'] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      width: 1000%;
+      height: 1000%;
+      cursor: pointer;
+    }
+  }
+  .ant-input {
+    height: 4.8rem !important;
+  }
+
+  .ant-select-single.ant-select-lg:not(.ant-select-customize-input)
+    .ant-select-selector {
+    height: 4.8rem !important;
+  }
+
+  .ant-select-single.ant-select-lg:not(.ant-select-customize-input) .ant-select-selector .ant-select-selection-item{
+    height: 4.8rem !important;
+    line-height: 4.8rem !important;
+    font-size: 1.4rem !important;
+  }
+
+  .ant-select-single.ant-select-lg:not(.ant-select-customize-input)
+    .ant-select-selector
+    .ant-select-selection-placeholder {
+    line-height: 4.8rem !important;
+    font-size: 1.4rem !important;
+  }
+}

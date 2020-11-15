@@ -1,0 +1,24 @@
+.layout-container {
+    background: #FFF !important;
+
+    .base-content {
+        padding: 0 15px;
+        margin-top: 80px;
+
+        .base-container {
+            min-height: calc(100vh - 150px);
+            // background: #FAFAFA;
+            background: #FFF !important;
+            padding: 24px;
+        }
+    }
+
+    &--blue{
+        background-color: #F6F8FB !important;
+        .base-content{
+         .base-container{
+            background-color: #F6F8FB !important;
+         }
+        }
+    }
+}

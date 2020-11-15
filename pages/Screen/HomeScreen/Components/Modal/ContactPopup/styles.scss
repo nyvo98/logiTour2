@@ -1,0 +1,82 @@
+.contact-us-container{
+    padding: 4.1rem 3rem;
+}
+
+.col-last-name{
+    display: flex !important;
+    justify-content: center;
+}
+
+.information{
+    width: 95%;
+    &_input{
+        width: 100% ;
+        height: 5rem;
+    }
+    &_inputMiddle{
+        width: 100% !important;
+        height: 5rem;
+        margin: 0 auto;
+    }
+    &_middle{
+        display: flex !important;
+        justify-content: center;
+    }
+}
+.contactUs{
+    font-size: 2.8rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+.yourInfor{
+    font-size: 1.6rem;
+}
+@media (max-width: 768px){
+    .information{
+        width: 100%;
+        &_input{
+            width: 100% ;
+            height: 5rem;
+        }
+        &_inputMiddle{
+            width: 100% !important;
+            height: 5rem;
+            margin: 0.5rem 0 !important
+        }
+        &_middle{
+            display: flex !important;
+            justify-content: center;
+        }
+    }
+}
+.title{
+    
+    &_input{
+        width: 100% !important;
+        height: 5rem;
+    }
+}
+
+.note{
+    text-align: center;
+    color: #666666
+}
+
+.ant-btn.buttonCustom{
+    margin: 0 auto;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    font-size: 2rem;
+    background-color: #d0af73 !important;
+    height: 5rem !important;
+    color: white !important;
+    text-transform: uppercase;
+    border-radius: 0.5rem;
+}
+.ant-btn.buttonCustom:hover{
+    background-color: #b89453 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0.7rem 6.4rem 0 rgba(0,0,0,0.07);
+}

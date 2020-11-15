@@ -1,0 +1,40 @@
+@import 'pages/Style/variable.scss';
+.attachments-container {
+  min-height: 6rem;
+
+  .attachments-list {
+    list-style-type: none;
+    margin: 0.8rem 0;
+    padding: 1rem;
+    background-color: #f6f8fb;
+    border: 1px solid #edf0f1;
+    &__item {
+      position: relative;
+      padding: 0 0 0 2.4rem;
+      &:not(:last-child):not(:first-child){
+          padding-bottom: 0.35rem;
+          padding-top: 0.35rem;
+      }
+      &:before {
+        position: absolute;
+        content: ' ';
+        display: block;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 1.65rem;
+        width: 1.4rem;
+        background: url(/static/Assets/Image/TourGallery/ic-photo-dwn.svg);
+      }
+    }
+  }
+
+  a{
+    &:link,&:visited{
+      color: #262626;
+    }
+    &:hover{
+      color: map-get($map: $main-colors, $key: 'primary');
+    }
+  }
+}

@@ -1,0 +1,139 @@
+@import 'pages/Style/variable.scss';
+
+
+.package-detail {
+  .ant-tabs-bar {
+    border: none;
+  }
+  .ant-tabs-nav {
+    width: 100%;
+    & > div {
+      width: 100%;
+      display: table;
+      border-collapse: collapse;
+      text-align: center;
+    }
+  }
+
+  .ant-tabs-nav .ant-tabs-tab {
+    margin: 0;
+    padding: 1.3rem 5.1rem;
+    border: solid 1px #edf0f1;
+    text-transform: uppercase;
+    font-weight: normal;
+    background: #fff;
+    display: table-cell;
+    width: 33.33%;
+    font-size: 1.7rem;
+    color: #333333;
+    &:first-child {
+      border-top-left-radius: 0.7rem;
+      border-bottom-left-radius: 0.7rem;
+    }
+
+    &:last-child {
+      border-top-right-radius: 0.7rem;
+      border-bottom-right-radius: 0.7rem;
+    }
+
+    &.ant-tabs-tab-active {
+      background-color: map-get($map: $main-colors, $key: 'primary');
+      color: #fff;
+      font-weight: normal;
+    }
+  }
+  .ant-tabs-ink-bar {
+    display: none !important;
+  }
+}
+
+.package-detail-card {
+  background-color: #fff;
+  padding: 3rem;
+  box-shadow: 0 1.8rem 2.7rem 0 rgba(black, 0.1);
+
+  &__title{
+    font-size: 2rem;
+  }
+
+  &__description {
+    margin: 0 0 3.6rem 0;
+    display: -webkit-box;
+    // font-size: 1.4rem;
+    letter-spacing: 0.009rem;
+    line-height: 2.6rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      max-height: 8rem;
+    }
+  }
+
+  &__price {
+    font-size: 2.4rem !important;
+    line-height: 2.4rem;
+    text-align: right;
+  }
+
+  &__priceText {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+
+  &__socials {
+    text-align: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    h3 {
+      margin: 4.7rem 0 3rem 0;
+    }
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style: none;
+      list-style-type: none;
+      width: 60%;
+      margin: 0 auto;
+      padding: 0;
+      li {
+        height: 4.2rem;
+        width: 4.2rem;
+        border: 0.1rem solid #edf0f1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        transition: 0.3s;
+        &:hover {
+          background-color: map-get($main-colors, 'primary');
+          cursor: pointer;
+          .icon--dark {
+            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+          }
+        }
+        &:not(:last-child)
+        {
+          margin:0 2.4rem 0 0;
+        }
+      }
+    }
+  }
+
+  &__book-btn{
+    font-size: 1.7rem;
+    margin: 0 0 -0.5rem 0;
+  }
+
+  .button-container .button-content.reverse.btn-paypal{
+    background-color: #000000;
+    border: 1px solid #000;
+    height: 4.8rem;
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+}
