@@ -1,5 +1,20 @@
-.package-list-container{
-    .load-more-button{
-        width: 320px;
-    }
+.package-list-container {
+  .load-more-button {
+    width: 320px;
+  }
+  .ant-input-search-enter-button input {
+    border-right: 1px solid #d9d9d9;
+    border-radius: 0.4rem;
+    font-size: 1.5rem;
+    height: 4.8rem;
+  }
+  .ant-input-search-enter-button
+    input
+    + .ant-input-group-addon
+    .ant-input-search-button {
+    border-radius: 0.4rem;
+    margin-left: 0.8rem;
+    height: 4.8rem;
+    width: 4.8rem;
+  }
 }

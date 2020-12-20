@@ -39,6 +39,20 @@ class PackageList extends React.PureComponent {
     this.setState({ ...this.state, arrTours: data, total: total });
   }
 
+  _fetchTours = async () => {
+    const { size } = this.state;
+    const response = await BaseAPI.getData(`tour?page=1&size=${size}`);
+    const { data, total } = response;
+    if (this.props.token) {
+      this.handleResetPw(this.props.token);
+    }
+
+    if (this.props.tokenConfirm) {
+      this.handleOpenConfirm(this.props.tokenConfirm);
+    }
+    this.setState({ ...this.state, arrTours: data, total: total });
+  };
+
   onPanigate = async () => {
     const { page, arrTours, size } = this.state;
     await this.setState({ isLoading: true });
@@ -91,27 +105,58 @@ class PackageList extends React.PureComponent {
       900
     );
   };
+  onInputChange = (e) => {
+    const { value } = e.target;
+    this.setState({ keyword: value });
+
+    if (!value) return this._fetchTours();
+  };
+  onSubmitSearch = async () => {
+    const { keyword, size } = this.state;
+    const { lang } = this.props.locale;
+    const req = { lang: lang, keyword: keyword, size, page: 1 };
+
+    // const response = await BaseAPI.postData("tourgallery/search", req);
+    // this.setState({ list: response.data, total: response.total });
+  };
 
   render() {
     const { messages } = this.props.locale;
+    const { keyword } = this.state;
     return (
       <div className="package-list-container container">
         <MyModal ref={this.ref} />
         <h1 className="heading heading--main MB30">
           {messages.tourPackages || ""}
         </h1>
-        <Form>
-          <Form.Item>
-            <Input.Search
-              // onChange={this.onInputChange}
-              // onSearch={this.onSubmitSearch}
-              enterButton={<i className="icon icon--search icon--14" />}
-              size="large"
-              value={"aaa"}
-              placeholder={messages.pleaseEnterSearchWord || ""}
-            />
-          </Form.Item>
-        </Form>
+        <Row>
+          <Col
+            xs={24}
+            md={{
+              span: 12,
+              offset: 12,
+            }}
+            lg={{
+              span: 8,
+              offset: 16,
+            }}
+            justify="end"
+          >
+            <Form onSubmit={this.onSubmitSearch}>
+              <Form.Item>
+                <Input.Search
+                  onChange={this.onInputChange}
+                  onSearch={this.onSubmitSearch}
+                  enterButton={<i className="icon icon--search icon--14" />}
+                  size="large"
+                  value={keyword}
+                  placeholder={messages.pleaseEnterSearchWord || ""}
+                />
+              </Form.Item>
+            </Form>
+          </Col>
+        </Row>
+        />
         <Row gutter={[30, 30]}>{this.renderListPackage()}</Row>
       </div>
     );

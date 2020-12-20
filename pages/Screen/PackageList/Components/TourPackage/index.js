@@ -40,15 +40,6 @@ class TourPackage extends React.PureComponent {
     this.setState({ list: response.data, total: response.total });
   };
 
-  _fetchTourGallery = async () => {
-    try {
-      const response = await BaseAPI.getData(`tourgallery?size=15&page=1`);
-      this.setState({ list: response.data, total: response.total });
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
   render() {
     const { tour, id } = this.props;
     const { lang, messages } = this.props.locale;
