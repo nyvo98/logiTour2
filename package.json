@@ -61,7 +61,7 @@
     "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.13.1",
     "react-facebook-login": "^4.1.1",
-    "react-google-login": "^5.1.2",
+    "react-google-login": "^5.1.25",
     "react-image-file-resizer": "^0.2.1",
     "react-image-gallery": "^1.0.6",
     "react-intl": "^2.9.0",

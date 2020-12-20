@@ -17,6 +17,38 @@ class TourPackage extends React.PureComponent {
     Router.pushRoute(`/package-detail/${id}`).then(() => window.scrollTo(0, 0));
   };
 
+  onInputChange = (e) => {
+    const { value } = e.target;
+    this.setState({ keyword: value });
+
+    if (!value) return this._fetchTourGallery();
+  };
+
+  onSubmitSearch = async () => {
+    const { keyword, size } = this.state;
+    const { lang } = this.props.locale;
+    const req = { lang: lang, keyword: keyword, size, page: 1 };
+    const response = await BaseAPI.postData("tourgallery/search", req);
+    this.setState({ list: response.data, total: response.total });
+  };
+  onPagination = async (page) => {
+    window.scrollTo(0, window.innerHeight);
+    const { size } = this.state;
+    const response = await BaseAPI.getData(
+      `tourgallery?size=${size}&page=${page}`
+    );
+    this.setState({ list: response.data, total: response.total });
+  };
+
+  _fetchTourGallery = async () => {
+    try {
+      const response = await BaseAPI.getData(`tourgallery?size=15&page=1`);
+      this.setState({ list: response.data, total: response.total });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   render() {
     const { tour, id } = this.props;
     const { lang, messages } = this.props.locale;

@@ -1,6 +1,6 @@
 import React from 'react'
 import TourPackage from 'pages/Screen/PackageList/Components/TourPackage'
-import { Row, Col } from 'antd'
+import { Row, Col, Form, Input, Result } from 'antd'
 import BaseAPI from 'controller/API/BaseAPI'
 import './style.scss'
 import { bindActionCreators } from 'redux'
@@ -19,7 +19,8 @@ class PackageList extends React.PureComponent {
       isLoading: false,
       page: 1,
       total: null,
-      size: 15
+      size: 15,
+      keyword: ""
     }
     this.ref = React.createRef()
   }
@@ -77,6 +78,7 @@ class PackageList extends React.PureComponent {
         <h1 className='heading heading--main MB30'>
           {messages.tourPackages || ''}
         </h1>
+         
         <Row gutter={[30, 30]}>{this.renderListPackage()}</Row>
       </div>
     )
