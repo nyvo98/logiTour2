@@ -42,7 +42,7 @@ export default class BaseAPI {
     tokenUser
   ) {
     try {
-      let serverUrl = "http://13.229.54.143:3031/api/";
+      let serverUrl = "http://13.212.8.105:3031/api/";
       const token = tokenUser || getDataLocal(KEY_STORE.JWT_TOKEN);
       const config = {
         headers: {
