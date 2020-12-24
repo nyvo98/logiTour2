@@ -68,7 +68,7 @@ class TourPackage extends React.PureComponent {
                 {tourDuration} {messages.days || ""}
               </div>
               <div className="tour-package__price">
-                VND {formatNumberBro(price)}
+                $ {formatNumberBro(price)}
               </div>
             </div>
             <div className="tour-package__content">

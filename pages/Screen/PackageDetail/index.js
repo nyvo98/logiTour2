@@ -1,71 +1,71 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Row, Col, Divider, Tabs } from "antd";
-import MyButton from "pages/Components/MyButton";
-import MyModal from "pages/Components/MyModal";
-import TourInformation from "./Components/TourInformation";
-import TourSchedule from "./Components/TourSchedule";
-import BookingInformation from "./Components/BookingInformation";
-import { withRouter } from "next/router";
+import React from 'react'
+import { connect } from 'react-redux'
+import { Row, Col, Divider, Tabs } from 'antd'
+import MyButton from 'pages/Components/MyButton'
+import MyModal from 'pages/Components/MyModal'
+import TourInformation from './Components/TourInformation'
+import TourSchedule from './Components/TourSchedule'
+import BookingInformation from './Components/BookingInformation'
+import { withRouter } from 'next/router'
 import {
   getNameObject,
   formatNumberBro,
   calculateDiffDate,
   getLength,
   stripHtml,
-} from "common/function";
-import BaseAPI from "controller/API/BaseAPI";
+} from 'common/function'
+import BaseAPI from 'controller/API/BaseAPI'
 
-import "./style.scss";
-import BookingModal from "./Components/BookingModal";
-import PaypalBookingModal from "./Components/PaypalBookingModal";
-import { bindActionCreators } from "redux";
-import PageReduxAction from "controller/Redux/actions/pageActions";
-import { images } from "config/images";
+import './style.scss'
+import BookingModal from './Components/BookingModal'
+import PaypalBookingModal from './Components/PaypalBookingModal'
+import { bindActionCreators } from 'redux'
+import PageReduxAction from 'controller/Redux/actions/pageActions'
+import { images } from 'config/images'
 // import LoginPopup from '../HomeScreen/Components/Modal/LoginPopup'
 
 class PackageDetail extends React.PureComponent {
   static async getInitialProps({ query }) {
-    return { query };
+    return { query }
   }
 
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       duration: {
-        normal: "0",
-        best: "0",
+        normal: '0',
+        best: '0',
       },
       isTooltipVisible: false,
       tour: {},
       paymentInformation: null,
-    };
+    }
 
-    this.ref = React.createRef();
+    this.ref = React.createRef()
   }
 
   async componentDidMount() {
-    const { query } = this.props.router;
+    const { query } = this.props.router
 
-    if (query.success) this.handlePaypalSuccess(true);
-    if (query.failed) this.handlePaypalSuccess(false);
+    if (query.success) this.handlePaypalSuccess(true)
+    if (query.failed) this.handlePaypalSuccess(false)
 
     const tourDetail = await BaseAPI.getDataByMe(
-      "tour",
+      'tour',
       this.props.router.query.id
-    );
+    )
     if (tourDetail) {
       const best = calculateDiffDate(
         tourDetail.tourInfoList.bestDuration.to,
         tourDetail.tourInfoList.bestDuration.from,
-        "days"
-      );
+        'days'
+      )
       const normal = calculateDiffDate(
         tourDetail.tourInfoList.duration.to,
         tourDetail.tourInfoList.duration.from,
-        "days"
-      );
+        'days'
+      )
 
       this.setState({
         tour: tourDetail,
@@ -73,61 +73,61 @@ class PackageDetail extends React.PureComponent {
           best,
           normal,
         },
-      });
+      })
     }
 
     const paymentInformation = await BaseAPI.getData(
       `bookingHistory/tourPayment/${this.props.router.query.id}`
-    );
-    this.setState({ paymentInformation });
+    )
+    this.setState({ paymentInformation })
 
-    const { setHeader, locale } = this.props;
-    const { lang } = locale;
+    const { setHeader, locale } = this.props
+    const { lang } = locale
     setHeader &&
       setHeader({
         mainTitle: getNameObject(tourDetail.title, lang),
         subTitle: getNameObject(tourDetail.subDescription, lang),
         background: tourDetail.image[0].image,
         isShadow: false,
-      });
+      })
   }
 
   handleChangeTooltipVisible = (isTooltipVisible) => {
-    return this.setState({ isTooltipVisible });
-  };
+    return this.setState({ isTooltipVisible })
+  }
 
   handleTabChange = (activeKey) => {
-    const isTooltipVisible = activeKey === "tour-schedule";
+    const isTooltipVisible = activeKey === 'tour-schedule'
 
-    return this.setState({ isTooltipVisible });
-  };
+    return this.setState({ isTooltipVisible })
+  }
 
   handleBooking = (tour) => () => {
-    const { paymentInformation } = this.state;
+    const { paymentInformation } = this.state
 
     if (paymentInformation && paymentInformation.isPayment === false) {
-      return this.handleOpenPaypal(tour)();
+      return this.handleOpenPaypal(tour)()
     }
     return this.ref.current.openModal(
       <BookingModal tour={tour} handlePayment={this.handlePaypalBooking} />,
       900
-    );
-  };
+    )
+  }
 
   handlePaypalBooking = (tour) => () => {
-    const { paymentInformation } = this.state;
+    const { paymentInformation } = this.state
     this.setState(
       { paymentInformation: { ...paymentInformation, ...tour } },
       () => {
-        return this.handleOpenPaypal(tour)();
+        return this.handleOpenPaypal(tour)()
       }
-    );
-  };
+    )
+  }
 
   handleOpenPaypal = (tour) => () => {
-    const { paymentInformation } = this.state;
-    const { payment } = paymentInformation || {};
-    const payload = { ...tour, ...payment };
+    const { paymentInformation } = this.state
+    const { payment } = paymentInformation || {}
+    const payload = { ...tour, ...payment }
 
     return this.ref.current.openModal(
       <PaypalBookingModal
@@ -135,18 +135,18 @@ class PackageDetail extends React.PureComponent {
         tour={payload}
       />,
       900
-    );
-  };
+    )
+  }
 
   handlePaypalSuccess = (isFail) => {
     return this.ref.current.openModal(
       <PaypalBookingModal isSuccess={isFail} />,
       900
-    );
-  };
+    )
+  }
 
   render() {
-    const { isTooltipVisible, tour, duration } = this.state;
+    const { isTooltipVisible, tour, duration } = this.state
     const {
       _id,
       title,
@@ -158,8 +158,8 @@ class PackageDetail extends React.PureComponent {
       tourInfoList,
       tourScheduleList,
       bookingInfoList,
-    } = tour;
-    const { lang, messages } = this.props.locale;
+    } = tour
+    const { lang, messages } = this.props.locale
     return (
       <div className="container package-detail">
         <MyModal ref={this.ref} />
@@ -167,7 +167,7 @@ class PackageDetail extends React.PureComponent {
           <Col xs={{ span: 24, order: 2 }} lg={{ span: 16, order: 1 }}>
             <Tabs animated={false} onChange={this.handleTabChange}>
               <Tabs.TabPane
-                tab={messages.tourInformation || ""}
+                tab={messages.tourInformation || ''}
                 key="tour-info"
               >
                 <TourInformation
@@ -179,7 +179,7 @@ class PackageDetail extends React.PureComponent {
                 />
               </Tabs.TabPane>
               <Tabs.TabPane
-                tab={messages.tourSchedule || ""}
+                tab={messages.tourSchedule || ''}
                 key="tour-schedule"
               >
                 <TourSchedule
@@ -188,7 +188,7 @@ class PackageDetail extends React.PureComponent {
                 />
               </Tabs.TabPane>
               <Tabs.TabPane
-                tab={messages.bookingInformation || ""}
+                tab={messages.bookingInformation || ''}
                 key="booking-information"
               >
                 <BookingInformation data={bookingInfoList} />
@@ -198,9 +198,7 @@ class PackageDetail extends React.PureComponent {
           <Col xs={{ span: 24, order: 1 }} lg={{ span: 8, order: 2 }}>
             <div className="package-detail-card">
               <h3 className="package-detail-card__title">
-                {`${getNameObject(title, lang)} : ${duration.normal} ${
-                  messages.days || ""
-                }`}
+                {`${getNameObject(title, lang)} `}
               </h3>
               <article className="package-detail-card__description">
                 {stripHtml(getNameObject(description, lang))}
@@ -210,17 +208,17 @@ class PackageDetail extends React.PureComponent {
                   {messages.price}
                 </Col>
                 <Col span={12} className="package-detail-card__price">
-                  {"VND " + formatNumberBro(price)}
+                  {'$ ' + formatNumberBro(price)}
                 </Col>
               </Row>
-              <Divider style={{ margin: "3rem 0" }} />
+              <Divider style={{ margin: '3rem 0' }} />
               <MyButton
                 isFullWidth
                 isNarrow
                 title={
                   <span>
-                    <i className="icon icon--edit icon--light icon--inline MR10" />{" "}
-                    {messages.book || ""}
+                    <i className="icon icon--edit icon--light icon--inline MR10" />{' '}
+                    {messages.book || ''}
                   </span>
                 }
                 className="package-detail-card__book-btn"
@@ -286,19 +284,19 @@ class PackageDetail extends React.PureComponent {
           </Col>
         </Row>
       </div>
-    );
+    )
   }
 }
 const mapStateToProps = (state) => ({
   locale: state.locale,
-});
+})
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setHeader: bindActionCreators(PageReduxAction.setHeader, dispatch),
-  };
-};
+  }
+}
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(PackageDetail));
+)(withRouter(PackageDetail))

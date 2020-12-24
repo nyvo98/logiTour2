@@ -1,18 +1,18 @@
-import React from "react";
-import TourPackage from "pages/Screen/PackageList/Components/TourPackage";
-import { Row, Col, Form, Input, Result } from "antd";
-import BaseAPI from "controller/API/BaseAPI";
-import "./style.scss";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import PageReduxAction from "controller/Redux/actions/pageActions";
-import MyModal from "pages/Components/MyModal";
-import ChangePwPopup from "../MyPage/Components/MyAccount/Components/ChangePwPopup";
-import LoginDone from "../HomeScreen/Components/Modal/LoginPopup/Component/LoginDone";
+import React from 'react'
+import TourPackage from 'pages/Screen/PackageList/Components/TourPackage'
+import { Row, Col, Form, Input, Result } from 'antd'
+import BaseAPI from 'controller/API/BaseAPI'
+import './style.scss'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import PageReduxAction from 'controller/Redux/actions/pageActions'
+import MyModal from 'pages/Components/MyModal'
+import ChangePwPopup from '../MyPage/Components/MyAccount/Components/ChangePwPopup'
+import LoginDone from '../HomeScreen/Components/Modal/LoginPopup/Component/LoginDone'
 
 class PackageList extends React.PureComponent {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       isLoadingFirst: true,
       arrTours: [],
@@ -20,58 +20,56 @@ class PackageList extends React.PureComponent {
       page: 1,
       total: null,
       size: 15,
-      keyword: "",
-    };
-    this.ref = React.createRef();
+      keyword: '',
+    }
+    this.ref = React.createRef()
   }
 
   async componentDidMount() {
-    const { size } = this.state;
-    const response = await BaseAPI.getData(`tour?page=1&size=${size}`);
-    const { data, total } = response;
+    const { size } = this.state
+    const response = await BaseAPI.getData(`tour?page=1&size=${size}`)
+    const { data, total } = response
     if (this.props.token) {
-      this.handleResetPw(this.props.token);
+      this.handleResetPw(this.props.token)
     }
 
     if (this.props.tokenConfirm) {
-      this.handleOpenConfirm(this.props.tokenConfirm);
+      this.handleOpenConfirm(this.props.tokenConfirm)
     }
-    this.setState({ ...this.state, arrTours: data, total: total });
+    this.setState({ ...this.state, arrTours: data, total: total })
   }
 
   _fetchTours = async () => {
-    const { size } = this.state;
-    const response = await BaseAPI.getData(`tour?page=1&size=${size}`);
-    const { data, total } = response;
+    const { size } = this.state
+    const response = await BaseAPI.getData(`tour?page=1&size=${size}`)
+    const { data, total } = response
     if (this.props.token) {
-      this.handleResetPw(this.props.token);
+      this.handleResetPw(this.props.token)
     }
 
     if (this.props.tokenConfirm) {
-      this.handleOpenConfirm(this.props.tokenConfirm);
+      this.handleOpenConfirm(this.props.tokenConfirm)
     }
-    this.setState({ ...this.state, arrTours: data, total: total });
-  };
+    this.setState({ ...this.state, arrTours: data, total: total })
+  }
 
   onPanigate = async () => {
-    const { page, arrTours, size } = this.state;
-    await this.setState({ isLoading: true });
-    const response = await BaseAPI.getData(
-      `tour?page=${page + 1}&size=${size}`
-    );
-    const { data, total } = response;
-    const listShow = [...arrTours, ...data];
+    const { page, arrTours, size } = this.state
+    await this.setState({ isLoading: true })
+    const response = await BaseAPI.getData(`tour?page=${page + 1}&size=${size}`)
+    const { data, total } = response
+    const listShow = [...arrTours, ...data]
     this.setState({
       ...this.state,
       arrTours: listShow,
       total: total,
       isLoading: false,
       page: page + 1,
-    });
-  };
+    })
+  }
 
   renderListPackage = () => {
-    const { arrTours } = this.state;
+    const { arrTours } = this.state
     return (
       arrTours &&
       arrTours.map(({ _id, ...tour }) => {
@@ -79,10 +77,10 @@ class PackageList extends React.PureComponent {
           <Col xs={24} md={12} lg={8} key={_id}>
             <TourPackage tour={tour} id={_id} />
           </Col>
-        );
+        )
       })
-    );
-  };
+    )
+  }
 
   handleResetPw = (token) => {
     return this.ref.current.openModal(
@@ -92,8 +90,8 @@ class PackageList extends React.PureComponent {
         isReset
       />,
       900
-    );
-  };
+    )
+  }
 
   handleOpenConfirm = (token) => {
     return this.ref.current.openModal(
@@ -103,31 +101,31 @@ class PackageList extends React.PureComponent {
         isReset
       />,
       900
-    );
-  };
+    )
+  }
   onInputChange = (e) => {
-    const { value } = e.target;
-    this.setState({ keyword: value });
+    const { value } = e.target
+    this.setState({ keyword: value })
 
-    if (!value) return this._fetchTours();
-  };
+    if (!value) return this._fetchTours()
+  }
   onSubmitSearch = async () => {
-    const { keyword, size } = this.state;
-    const { lang } = this.props.locale;
-    const req = { lang: lang, keyword: keyword, size, page: 1 };
+    const { keyword, size } = this.state
+    const { lang } = this.props.locale
+    const req = { lang: lang, keyword: keyword, size, page: 1 }
 
     // const response = await BaseAPI.postData("tourgallery/search", req);
     // this.setState({ list: response.data, total: response.total });
-  };
+  }
 
   render() {
-    const { messages } = this.props.locale;
-    const { keyword } = this.state;
+    const { messages } = this.props.locale
+    const { keyword } = this.state
     return (
       <div className="package-list-container container">
         <MyModal ref={this.ref} />
         <h1 className="heading heading--main MB30">
-          {messages.tourPackages || ""}
+          {messages.tourPackages || ''}
         </h1>
         <Row>
           <Col
@@ -150,7 +148,7 @@ class PackageList extends React.PureComponent {
                   enterButton={<i className="icon icon--search icon--14" />}
                   size="large"
                   value={keyword}
-                  placeholder={messages.pleaseEnterSearchWord || ""}
+                  placeholder={messages.pleaseEnterSearchWord || ''}
                 />
               </Form.Item>
             </Form>
@@ -159,18 +157,18 @@ class PackageList extends React.PureComponent {
         />
         <Row gutter={[30, 30]}>{this.renderListPackage()}</Row>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) => {
-  return { locale: state.locale };
-};
+  return { locale: state.locale }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setHeader: bindActionCreators(PageReduxAction.setHeader, dispatch),
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(PackageList);
+export default connect(mapStateToProps, mapDispatchToProps)(PackageList)
