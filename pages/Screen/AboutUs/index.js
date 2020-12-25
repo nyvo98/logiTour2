@@ -1,15 +1,15 @@
-import React, { PureComponent } from "react";
-import { Row, Col, Timeline } from "antd";
-import { connect } from "react-redux";
-import Media from "react-media";
-import "./styles.scss";
-import { images } from "config/images";
-import { getNameObject } from "common/function";
-import moment from "moment";
+import React, { PureComponent } from 'react'
+import { Row, Col, Timeline } from 'antd'
+import { connect } from 'react-redux'
+import Media from 'react-media'
+import './styles.scss'
+import { images } from 'config/images'
+import { getNameObject } from 'common/function'
+import moment from 'moment'
 
 class AboutUs extends PureComponent {
   renderTimelineItem = (contents, mergeData) => {
-    console.log(contents);
+    console.log(contents)
     return contents.map((item) => {
       if (item.year) {
         return (
@@ -20,15 +20,15 @@ class AboutUs extends PureComponent {
             <br />
             <br />
           </Timeline.Item>
-        );
+        )
       } else {
         return this.renderLine(
           item,
-          mergeData.indexOf(item.id) % 2 === 0 ? "left" : "right"
-        );
+          mergeData.indexOf(item.id) % 2 === 0 ? 'left' : 'right'
+        )
       }
-    });
-  };
+    })
+  }
 
   renderTimelineItemMobile = (contents) => {
     return contents.map((item) => {
@@ -40,7 +40,7 @@ class AboutUs extends PureComponent {
             <br />
             <br />
           </Timeline.Item>
-        );
+        )
       } else {
         return (
           <Timeline.Item
@@ -49,24 +49,24 @@ class AboutUs extends PureComponent {
           >
             <p>
               <span className="aboutus-timeline__time">
-                {moment(item.date).format("DD MMM").toUpperCase()}
-              </span>{" "}
+                {moment(item.date).format('DD MMM').toUpperCase()}
+              </span>{' '}
               <span className="aboutus-timeline__year">
-                {moment(item.date).format("YYYY")}
-              </span>{" "}
+                {moment(item.date).format('YYYY')}
+              </span>{' '}
               <span className="aboutus-timeline__detail">
                 {getNameObject(item.content, this.props.locale.lang)}
               </span>
             </p>
             <br />
           </Timeline.Item>
-        );
+        )
       }
-    });
-  };
+    })
+  }
 
   renderLine = (item, position) => {
-    const cssPosition = position === "left" ? "right" : "left";
+    const cssPosition = position === 'left' ? 'right' : 'left'
     return (
       <Timeline.Item
         dot={<div className="time-line-dot" />}
@@ -79,16 +79,16 @@ class AboutUs extends PureComponent {
           >
             <img
               className={`aboutus-timeline__${cssPosition}-side__icon`}
-              src={images[position === "left" ? "icLineRight" : "icLineLeft"]}
+              src={images[position === 'left' ? 'icLineRight' : 'icLineLeft']}
             />
           </div>
 
           <p className={`style-${cssPosition}`}>
             <span className="aboutus-timeline__time">
-              {moment(item.date).format("DD MMM").toUpperCase()}
-            </span>{" "}
+              {moment(item.date).format('DD MMM').toUpperCase()}
+            </span>{' '}
             <span className="aboutus-timeline__year">
-              {moment(item.date).format("YYYY")}
+              {moment(item.date).format('YYYY')}
             </span>
             <br />
             <span className="aboutus-timeline__detail">
@@ -100,12 +100,12 @@ class AboutUs extends PureComponent {
           <br />
         </div>
       </Timeline.Item>
-    );
-  };
+    )
+  }
 
   renderCompanyMember = () => {
-    const { settingRedux } = this.props;
-    const { member } = settingRedux.companyConfig || [];
+    const { settingRedux } = this.props
+    const { member } = settingRedux.companyConfig || []
 
     return (
       member &&
@@ -123,19 +123,22 @@ class AboutUs extends PureComponent {
               <p className="memberColumn_memberName">{name}</p>
               <p className="memberColumn_memberWork">{role}</p>
             </Col>
-          );
+          )
         })
-    );
-  };
+    )
+  }
 
   render() {
-    const { settingRedux } = this.props;
-    const { messages } = this.props.locale;
-    console.log(settingRedux);
+    const { settingRedux } = this.props
+    const { messages } = this.props.locale
+    console.log(settingRedux)
     return (
       <div className="container">
         <h3 className="h3Tag">{messages.haveTrip}</h3>
-        <p className="MT30 haveTrip">{messages.aboutUsDescription}</p>
+        <p className="MT30 haveTrip">
+          This is our test page. We will try to improve in the future. Thanks
+          for your trust and support.
+        </p>
         <h3 className="MT90 h3Tag">{messages.makeUsUnique}</h3>
         <div>
           <Row justify="space-between" className="uniqueRow">
@@ -180,7 +183,7 @@ class AboutUs extends PureComponent {
           query="(min-width:1200px)"
           render={() => (
             <div className="aboutus-timeline">
-              <Timeline style={{ width: "100%" }} mode="alternate">
+              <Timeline style={{ width: '100%' }} mode="alternate">
                 {settingRedux &&
                   settingRedux.timelineConfig.data.map((item) =>
                     this.renderTimelineItem(
@@ -197,9 +200,9 @@ class AboutUs extends PureComponent {
           render={() => (
             <Timeline
               style={{
-                display: "flex",
-                justifyContent: "center",
-                flexDirection: "column",
+                display: 'flex',
+                justifyContent: 'center',
+                flexDirection: 'column',
               }}
             >
               {settingRedux &&
@@ -210,13 +213,13 @@ class AboutUs extends PureComponent {
           )}
         />
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) => ({
   locale: state.locale,
   settingRedux: state.settingRedux,
-});
+})
 
-export default connect(mapStateToProps)(AboutUs);
+export default connect(mapStateToProps)(AboutUs)

@@ -1,111 +1,111 @@
-import React from "react";
-import { images } from "config/images";
-import "./style.scss";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import StorageAction from "controller/Redux/actions/storageActions";
-import { Router } from "common/routes";
-import { withRouter } from "next/router";
+import React from 'react'
+import { images } from 'config/images'
+import './style.scss'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import StorageAction from 'controller/Redux/actions/storageActions'
+import { Router } from 'common/routes'
+import { withRouter } from 'next/router'
 
-import { getNameObject } from "common/function";
-import { UnorderedListOutlined } from "@ant-design/icons";
-import { Layout, Menu, Drawer, Row, Col } from "antd";
-import Media from "react-media";
-import Link from "next/link";
-import SelectLanguage from "pages/Components/SelectLanguage";
-import MyModal from "pages/Components/MyModal";
-import LoginPopup from "pages/Screen/HomeScreen/Components/Modal/LoginPopup";
-import ContactusPopup from "pages/Screen/HomeScreen/Components/Modal/ContactPopup";
+import { getNameObject } from 'common/function'
+import { UnorderedListOutlined } from '@ant-design/icons'
+import { Layout, Menu, Drawer, Row, Col } from 'antd'
+import Media from 'react-media'
+import Link from 'next/link'
+import SelectLanguage from 'pages/Components/SelectLanguage'
+import MyModal from 'pages/Components/MyModal'
+import LoginPopup from 'pages/Screen/HomeScreen/Components/Modal/LoginPopup'
+import ContactusPopup from 'pages/Screen/HomeScreen/Components/Modal/ContactPopup'
 
 const arrLanguage = [
   {
-    title: "United States Of America",
-    lang: "en",
+    title: 'United States Of America',
+    lang: 'en',
     src: images.flagEnglish,
   },
   {
-    title: "Vietnam",
-    lang: "vi",
+    title: 'Vietnam',
+    lang: 'vi',
     src: images.flagVietnam,
   },
-];
+]
 class Header extends React.PureComponent {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       visible: false,
       isScroll: false,
-    };
-    this.myModal = React.createRef();
+    }
+    this.myModal = React.createRef()
   }
 
   componentDidMount() {
-    window.scrolling = false;
-    this.handleScroll();
-    window.addEventListener("scroll", this.handleScroll);
+    window.scrolling = false
+    this.handleScroll()
+    window.addEventListener('scroll', this.handleScroll)
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener('scroll', this.handleScroll)
   }
 
   handleScroll = () => {
     if (window.scrollY > 50 || window.pageYOffset > 50) {
       if (!window.scrolling) {
-        this.setState({ isScroll: true });
-        window.scrolling = true;
+        this.setState({ isScroll: true })
+        window.scrolling = true
       }
     } else {
       if (window.scrolling) {
-        this.setState({ isScroll: false });
-        window.scrolling = false;
+        this.setState({ isScroll: false })
+        window.scrolling = false
       }
     }
-  };
+  }
 
   onShowDrawer = () => {
     this.setState({
       visible: true,
-    });
-  };
+    })
+  }
 
   onClose = () => {
     this.setState({
       visible: false,
-    });
-  };
+    })
+  }
 
   onSetLocale = (lang) => () => {
-    const { setLocale } = this.props;
-    setLocale(lang);
-  };
+    const { setLocale } = this.props
+    setLocale(lang)
+  }
 
   backHome = () => {
-    Router.pushRoute("/");
-  };
+    Router.pushRoute('/')
+  }
 
   samplePage = () => {
-    Router.pushRoute("/sample");
-  };
+    Router.pushRoute('/sample')
+  }
   menu = () => {
-    let { lang } = this.props.locale;
-    let selectOptionList = arrLanguage.filter((obj) => obj.lang !== lang);
+    let { lang } = this.props.locale
+    let selectOptionList = arrLanguage.filter((obj) => obj.lang !== lang)
     return (
       <React.Fragment>
         <Menu
           theme="dark"
           mode="vertical"
           style={{
-            lineHeight: "64px",
-            background: "#fff",
-            color: "#020815",
-            padding: "15px",
-            borderRadius: "12px",
+            lineHeight: '64px',
+            background: '#fff',
+            color: '#020815',
+            padding: '15px',
+            borderRadius: '12px',
           }}
         >
           {selectOptionList.map((item, i) => (
             <Menu.Item key={i} className="menu-flag-item">
-              <span className={"disable"} onClick={this.onSetLocale(item.lang)}>
+              <span className={'disable'} onClick={this.onSetLocale(item.lang)}>
                 <img className="flags" alt={item.title} src={item.src} />
                 {`${item.title}  `}
               </span>
@@ -113,22 +113,22 @@ class Header extends React.PureComponent {
           ))}
         </Menu>
       </React.Fragment>
-    );
-  };
+    )
+  }
 
   renderJumpBotron = () => {
-    const { globalHeader, settingRedux, locale, router } = this.props;
+    const { globalHeader, settingRedux, locale, router } = this.props
 
-    let headerObject = globalHeader;
+    let headerObject = globalHeader
     if (settingRedux) {
       const headerSetting = settingRedux.headerConfig.find((item) => {
-        if (router.asPath === "/") {
-          return item.key === "default";
+        if (router.asPath === '/') {
+          return item.key === 'default'
         }
-        return router.asPath.includes(item.key);
-      });
+        return router.asPath.includes(item.key)
+      })
       if (headerSetting) {
-        headerObject = headerSetting;
+        headerObject = headerSetting
       }
     }
     return (
@@ -164,59 +164,59 @@ class Header extends React.PureComponent {
           </div>
         </div>
       </div>
-    );
-  };
+    )
+  }
 
   onShowLoginPopup = () => {
     this.myModal.current.openModal(
       <LoginPopup closeModal={this.myModal.current.closeModal} />,
       563
-    );
-  };
+    )
+  }
 
   onProfile = () => {
-    Router.pushRoute("/my-page/my-account");
-  };
+    Router.pushRoute('/my-page/my-account')
+  }
 
   onShowContactPopup = () => {
     this.myModal.current.openModal(
       <ContactusPopup closeModal={this.myModal.current.closeModal} />,
       900
-    );
-  };
+    )
+  }
 
   renderDeskopNavBar() {
-    const { userRedux } = this.props;
-    const { isScroll } = this.state;
-    const { messages } = this.props.locale;
+    const { userRedux } = this.props
+    const { isScroll } = this.state
+    const { messages } = this.props.locale
 
     return (
       <>
         <div
           className={`header-navigation ${
-            isScroll ? "header-navigation--fixed" : ""
+            isScroll ? 'header-navigation--fixed' : ''
           }`}
         >
           <div className={`header-container__topbar`}>
             <div className="container flex">
-              <Row style={{ width: "100%" }}>
+              <Row style={{ width: '100%' }}>
                 <Col flex={1} className="flex align-center">
                   <i className="icon icon--map icon--14 icon--primary MR10" />
                   Cam Ranh, Khanh Hoa, Vietnam
                 </Col>
                 <Col flex={1} className="flex align-center">
-                  <i className="icon icon--phone-fullfill MR10 icon--14 icon--primary" />{" "}
-                  FAX :
+                  <i className="icon icon--phone-fullfill MR10 icon--14 icon--primary" />{' '}
+                  +84 70 2496 225
                 </Col>
                 <Col flex={1}>
                   <ul className="header-container__social-icons">
                     <li>
-                      <a className="flex" href="mailto:abc@abc.com">
+                      <a className="flex" href="mailto:nhivo.yn@gmail.com">
                         <i className="icon cursor pointer icon--email icon--grey icon--hover-primary" />
                       </a>
                     </li>
                     <li>
-                      <a className="flex" href="https://t.me/USERNAME">
+                      <a className="flex" href="https://t.me/Ny_Danyk">
                         <i className="icon cursor pointer icon--telegram icon--grey icon--hover-primary" />
                       </a>
                     </li>
@@ -232,7 +232,7 @@ class Header extends React.PureComponent {
                     mode="horizontal"
                     theme="dark"
                     className="header-background"
-                    style={{ lineHeight: "5rem", fontSize: "1.3rem" }}
+                    style={{ lineHeight: '5rem', fontSize: '1.3rem' }}
                   >
                     <Menu.Item>
                       <SelectLanguage fix />
@@ -241,7 +241,7 @@ class Header extends React.PureComponent {
                       {/* {userRedux ? (<Link href='/my-page'>{(messages.welcome) + ' ' + userRedux.email}</Link>) : (<a onClick={this.onShowLoginPopup}>{messages.login}</a>)} */}
                       {userRedux ? (
                         <Link href="/my-page">
-                          {messages.myAccount || "My account"}
+                          {messages.myAccount || 'My account'}
                         </Link>
                       ) : (
                         <a onClick={this.onShowLoginPopup}>{messages.login}</a>
@@ -260,15 +260,15 @@ class Header extends React.PureComponent {
                   mode="horizontal"
                   theme="dark"
                   style={{
-                    background: "transparent",
-                    color: "#fff",
-                    border: "none",
-                    fontSize: "1.3rem",
-                    lineHeight: isScroll ? null : "8.4rem",
+                    background: 'transparent',
+                    color: '#fff',
+                    border: 'none',
+                    fontSize: '1.3rem',
+                    lineHeight: isScroll ? null : '8.4rem',
                   }}
                   className="text text-right"
                 >
-                  <Menu.Item style={{ float: "left", margin: 0, padding: 0 }}>
+                  <Menu.Item style={{ float: 'left', margin: 0, padding: 0 }}>
                     <Link href="/">
                       <div className="logo">
                         <img src={images.logoHeader} alt="Adel Tour" />
@@ -288,7 +288,7 @@ class Header extends React.PureComponent {
                     <a
                       onClick={this.onShowContactPopup}
                       className="flex justify-center align-center primary"
-                      style={{ display: "flex", color: "#d0af73" }}
+                      style={{ display: 'flex', color: '#d0af73' }}
                     >
                       <i className="icon icon--envelop icon--34 icon--primary" />
                       {messages.contactUs}
@@ -303,11 +303,11 @@ class Header extends React.PureComponent {
           {this.renderJumpBotron()}
         </Layout.Header>
       </>
-    );
+    )
   }
 
   renderMobleNavBar() {
-    const { messages } = this.props.locale;
+    const { messages } = this.props.locale
 
     return (
       <div>
@@ -316,12 +316,12 @@ class Header extends React.PureComponent {
           placement="right"
           onClose={this.onClose}
           visible={this.state.visible}
-          drawerStyle={{ background: "#020815" }}
+          drawerStyle={{ background: '#020815' }}
         >
           <Menu
             theme="dark"
             mode="vertical"
-            style={{ lineHeight: "64px", background: "#020815" }}
+            style={{ lineHeight: '64px', background: '#020815' }}
           >
             <Menu.Item>
               <Link href="/package-list">{messages.tourPackages}</Link>
@@ -344,7 +344,7 @@ class Header extends React.PureComponent {
           <Menu
             theme="dark"
             mode="horizontal"
-            style={{ lineHeight: "64px", background: "#020815" }}
+            style={{ lineHeight: '64px', background: '#020815' }}
           >
             <Menu.Item key="1">
               <div className="logo">
@@ -353,20 +353,20 @@ class Header extends React.PureComponent {
             </Menu.Item>
             <Menu.Item
               style={{
-                float: "right",
-                display: "flex",
-                justifyContent: "space-around",
-                alignItems: "center",
+                float: 'right',
+                display: 'flex',
+                justifyContent: 'space-around',
+                alignItems: 'center',
               }}
             >
               <a onClick={this.onShowDrawer}>
                 <UnorderedListOutlined
-                  style={{ fontSize: 20, color: "white" }}
+                  style={{ fontSize: 20, color: 'white' }}
                 />
               </a>
             </Menu.Item>
             <Menu.Item
-              style={{ float: "right", paddingLeft: 0, paddingRight: 0 }}
+              style={{ float: 'right', paddingLeft: 0, paddingRight: 0 }}
             >
               <a href="#" onClick={this.onShowLoginPopup}>
                 {messages.login}
@@ -376,7 +376,7 @@ class Header extends React.PureComponent {
           {this.renderJumpBotron()}
         </Layout.Header>
       </div>
-    );
+    )
   }
 
   render() {
@@ -392,7 +392,7 @@ class Header extends React.PureComponent {
         />
         <MyModal ref={this.myModal} />
       </React.Fragment>
-    );
+    )
   }
 }
 const mapStateToProps = (state) => ({
@@ -401,10 +401,10 @@ const mapStateToProps = (state) => ({
   internetRedux: state.internetRedux,
   userRedux: state.userRedux,
   globalHeader: state.globalHeader,
-});
+})
 const mapDispatchToProps = (dispatch) => {
   return {
     setLocale: bindActionCreators(StorageAction.setLocale, dispatch),
-  };
-};
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
+  }
+}
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header))
