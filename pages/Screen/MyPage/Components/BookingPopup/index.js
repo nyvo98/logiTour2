@@ -1,22 +1,22 @@
-import React, { PureComponent } from "react";
-import MyButton from "pages/Components/MyButton";
-import { Divider } from "antd";
-import "./styles.scss";
-import { connect } from "react-redux";
+import React, { PureComponent } from 'react'
+import MyButton from 'pages/Components/MyButton'
+import { Divider } from 'antd'
+import './styles.scss'
+import { connect } from 'react-redux'
 import {
   getNameObject,
   formatNumberBro,
   calculateDiffDate,
   getLength,
-} from "common/function";
-import moment from "moment";
+} from 'common/function'
+import moment from 'moment'
 
 class BookingPopup extends PureComponent {
   render() {
     if (this.props.data) {
-      const { title, price, tourInfoList } = this.props.data.tourId;
-      const { lang, messages } = this.props.locale;
-      const { closeModal, data } = this.props;
+      const { title, price, tourInfoList } = this.props.data.tourId
+      const { lang, messages } = this.props.locale
+      const { closeModal, data } = this.props
       const {
         firstName,
         lastName,
@@ -26,23 +26,23 @@ class BookingPopup extends PureComponent {
         room,
         passportFile,
         disease,
-      } = data.bookingInfo;
+      } = data.bookingInfo
       const normal = calculateDiffDate(
         tourInfoList.duration.to,
         tourInfoList.duration.from,
-        "days"
-      );
+        'days'
+      )
       return (
         <div className="booking-popup">
           <h2 className="booking-popup__title heading heading--main">
-            {messages.bookingHistory || ""}
+            {messages.bookingHistory || ''}
           </h2>
           <div className="booking-popup__name dark">
-            {getNameObject(title, lang)} : {normal} {messages.days || ""}
+            {getNameObject(title, lang)}
           </div>
           <div className="booking-popup-price">
             <div className="booking-popup-price__label">
-              {messages.price || ""}
+              {messages.price || ''}
             </div>
             <div className="booking-popup-price__value dark">
               $ {formatNumberBro(price)}
@@ -52,19 +52,19 @@ class BookingPopup extends PureComponent {
           <div className="booking-popup-info">
             <div className="booking-popup-info-item">
               <div className="booking-popup-info-item__label">
-                {messages.firstName || ""} :
+                {messages.firstName || ''} :
               </div>
               <div className="booking-popup-info-item__value">{firstName}</div>
             </div>
             <div className="booking-popup-info-item">
               <div className="booking-popup-info-item__label">
-                {messages.lastName || ""} :
+                {messages.lastName || ''} :
               </div>
               <div className="booking-popup-info-item__value">{lastName}</div>
             </div>
             <div className="booking-popup-info-item">
               <div className="booking-popup-info-item__label">
-                {messages.nation + " " + messages.name}:
+                {messages.nation + ' ' + messages.name}:
               </div>
               <div className="booking-popup-info-item__value">{nation}</div>
             </div>
@@ -91,7 +91,7 @@ class BookingPopup extends PureComponent {
                 {messages.passport} :
               </div>
               <div className="booking-popup-info-item__value">
-                {getLength(passportFile) > 0 ? "Y" : "N"}
+                {getLength(passportFile) > 0 ? 'Y' : 'N'}
               </div>
             </div>
             <div className="booking-popup-info-item">
@@ -108,21 +108,21 @@ class BookingPopup extends PureComponent {
             </div>
             <div className="booking-popup-info-item">
               <div className="booking-popup-info-item__label">
-                {"Start date"} :
+                {'Start date'} :
               </div>
               <div className="booking-popup-info-item__value">
                 {moment(data.tourId.tourInfoList.duration.from)
-                  .format("DD/MM/YYYY")
+                  .format('DD/MM/YYYY')
                   .toUpperCase()}
               </div>
             </div>
             <div className="booking-popup-info-item">
               <div className="booking-popup-info-item__label">
-                {"End date"} :
+                {'End date'} :
               </div>
               <div className="booking-popup-info-item__value">
                 {moment(data.tourId.tourInfoList.duration.to)
-                  .format("DD/MM/YYYY")
+                  .format('DD/MM/YYYY')
                   .toUpperCase()}
               </div>
             </div>
@@ -131,13 +131,13 @@ class BookingPopup extends PureComponent {
             <MyButton onClick={closeModal} title="CONFIRM" isFullWidth />
           </div>
         </div>
-      );
+      )
     } else {
-      return null;
+      return null
     }
   }
 }
 
-const mapStateToProps = (state) => ({ locale: state.locale });
+const mapStateToProps = (state) => ({ locale: state.locale })
 
-export default connect(mapStateToProps)(BookingPopup);
+export default connect(mapStateToProps)(BookingPopup)

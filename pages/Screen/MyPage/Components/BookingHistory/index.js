@@ -1,79 +1,79 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-import BookingList from "../BookingList";
-import EmptyList from "../EmptyList";
-import MyButton from "pages/Components/MyButton";
-import "./style.scss";
-import BaseAPI from "controller/API/BaseAPI";
+import BookingList from '../BookingList'
+import EmptyList from '../EmptyList'
+import MyButton from 'pages/Components/MyButton'
+import './style.scss'
+import BaseAPI from 'controller/API/BaseAPI'
 
 const mocks = [
   {
     id: 1,
     date: new Date(),
-    package: "NAMI ISLAND DAY TOUR : 13 days",
+    package: 'NAMI ISLAND DAY TOUR : 13 days',
   },
   {
     id: 2,
     date: new Date(),
-    package: "NAMI ISLAND DAY TOUR : 13 days",
+    package: 'NAMI ISLAND DAY TOUR : 13 days',
   },
   {
     id: 3,
     date: new Date(),
-    package: "NAMI ISLAND DAY TOUR : 13 days",
+    package: 'NAMI ISLAND DAY TOUR : 13 days',
   },
   {
     id: 4,
     date: new Date(),
-    package: "NAMI ISLAND DAY TOUR : 13 days",
+    package: 'NAMI ISLAND DAY TOUR : 13 days',
   },
-];
+]
 
 class BookingHistory extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       bookingList: null,
       page: 1,
       limit: 4,
-    };
+    }
   }
   async componentDidMount() {
     try {
-      const response = await BaseAPI.getData("bookinghistory");
+      const response = await BaseAPI.getData('bookinghistory')
 
       const bookingList = response.map((booking) => {
-        booking.tourId = JSON.parse(booking.tourId);
-        return booking;
-      });
+        booking.tourId = JSON.parse(booking.tourId)
+        return booking
+      })
 
-      this.setState({ bookingList });
+      this.setState({ bookingList })
     } catch (e) {
-      console.log(e);
+      console.log(e)
     }
   }
 
   renderBookingList = () => {
-    const { bookingList, page, limit } = this.state;
+    const { bookingList, page, limit } = this.state
     if (bookingList && bookingList.length === 0) {
-      return <EmptyList />;
+      return <EmptyList />
     }
 
-    return <BookingList list={bookingList} />;
-  };
+    return <BookingList list={bookingList} />
+  }
 
   render() {
-    const { messages } = this.props.locale;
-    const { bookingList, limit, page } = this.state;
+    const { messages } = this.props.locale
+    const { bookingList, limit, page } = this.state
     return (
       <div className="booking-history-container MT100 PT50">
         <h2 className="heading heading--main PB50">
-          {messages.bookingHistory || ""}
+          {messages.bookingHistory || ''}
         </h2>
         {this.renderBookingList()}
         {/* Pagination */}
-        <p className="MT68 MB35 dark text text-center">
+        {/* <p className="MT68 MB35 dark text text-center">
           {bookingList &&
             (bookingList.length > limit
               ? limit * page
@@ -82,12 +82,12 @@ class BookingHistory extends Component {
         </p>
         <div className="booking-history__button">
           <MyButton title="HISTORY MORE" isFullWidth />
-        </div>
+        </div> */}
       </div>
-    );
+    )
   }
 }
 
-const mapStateToProps = (state) => ({ locale: state.locale });
+const mapStateToProps = (state) => ({ locale: state.locale })
 
-export default connect(mapStateToProps)(BookingHistory);
+export default connect(mapStateToProps)(BookingHistory)

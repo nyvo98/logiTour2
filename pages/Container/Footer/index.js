@@ -62,15 +62,15 @@ class Footer extends React.PureComponent {
                   <i className="icon icon--phone-fullfill MR10 icon--14 icon--primary" />{' '}
                   CALL US : 070296225
                 </p>
-                <p style={{ lineHeight: 2 }}>
+                {/* <p style={{ lineHeight: 2 }}>
                   <br />
                   <br />
                   <br />
                   <br /> <br />
-                </p>
+                </p> */}
               </div>
             </Col>
-            <Col
+            {/* <Col
               xs={24}
               lg={24}
               xl={24}
@@ -101,7 +101,7 @@ class Footer extends React.PureComponent {
                   <SelectLanguage isFooter />
                 </li>
               </ul>
-            </Col>
+            </Col> */}
           </Row>
           <p className="footer-container__copyright"></p>
         </div>

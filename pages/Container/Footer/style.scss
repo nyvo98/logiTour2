@@ -1,17 +1,16 @@
 @import 'pages/Style/variable.scss';
 
-
 .footer-container {
   // css here
-  &__copyright{
+  &__copyright {
     text-align: center;
-    margin-bottom: 12rem;
+    margin-bottom: 0rem;
   }
   background-color: map-get($background-colors, 'dark') !important;
   color: map-get($text-colors, 'dark-grey') !important;
   padding: 8rem 0 !important;
 
-  &__logo{
+  &__logo {
     margin: 0 0 4rem 0;
     text-align: center;
   }
@@ -26,8 +25,8 @@
     margin: 0;
     li {
       margin-bottom: 3.2rem;
-      &:last-child{
-        color: yellow !important
+      &:last-child {
+        color: yellow !important;
       }
     }
     li:not(:last-child) {
@@ -62,20 +61,20 @@
     margin: 0 0 4rem 0;
     padding: 0;
     > li:not(:last-child) {
-      margin:0 3.4rem 0 0;
+      margin: 0 3.4rem 0 0;
     }
   }
-  &__column1{
+  &__column1 {
     padding: 0 !important;
     justify-content: center;
   }
-  &__column2{
+  &__column2 {
     padding: 0 !important;
     margin-top: -0.3rem !important;
     justify-content: flex-start;
   }
-  @media(max-width: 1024px){
-    &__navigation{
+  @media (max-width: 1024px) {
+    &__navigation {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -86,6 +85,6 @@
     }
   }
 }
-.icon-custom{
+.icon-custom {
   margin-bottom: -0.5rem;
 }
