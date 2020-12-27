@@ -26,6 +26,7 @@ class BookingPopup extends PureComponent {
         room,
         passportFile,
         disease,
+        residentNum,
       } = data.bookingInfo
       const normal = calculateDiffDate(
         tourInfoList.duration.to,
@@ -91,7 +92,8 @@ class BookingPopup extends PureComponent {
                 {messages.passport} :
               </div>
               <div className="booking-popup-info-item__value">
-                {getLength(passportFile) > 0 ? 'Y' : 'N'}
+                {/* {getLength(passportFile) > 0 ? 'Y' : 'N'} */}
+                {residentNum}
               </div>
             </div>
             {/* <div className="booking-popup-info-item">
