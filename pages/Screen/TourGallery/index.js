@@ -173,6 +173,7 @@ class TourGallery extends React.PureComponent {
                 onChange={this.onPagination}
                 defaultCurrent={1}
                 total={this.state.total}
+                pageSize={this.state.size}
               />
             )}
           </Col>

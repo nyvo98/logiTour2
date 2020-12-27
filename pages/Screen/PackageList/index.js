@@ -9,9 +9,10 @@ import PageReduxAction from 'controller/Redux/actions/pageActions'
 import MyModal from 'pages/Components/MyModal'
 import ChangePwPopup from '../MyPage/Components/MyAccount/Components/ChangePwPopup'
 import LoginDone from '../HomeScreen/Components/Modal/LoginPopup/Component/LoginDone'
+import MyPagination from 'pages/Components/MyPagination'
 
 class PackageList extends React.PureComponent {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       isLoadingFirst: true,
@@ -20,12 +21,12 @@ class PackageList extends React.PureComponent {
       page: 1,
       total: null,
       size: 15,
-      keyword: '',
+      keyword: ''
     }
     this.ref = React.createRef()
   }
 
-  async componentDidMount() {
+  async componentDidMount () {
     const { size } = this.state
     const response = await BaseAPI.getData(`tour?page=1&size=${size}`)
     const { data, total } = response
@@ -53,6 +54,15 @@ class PackageList extends React.PureComponent {
     this.setState({ ...this.state, arrTours: data, total: total })
   }
 
+  onPagination = async page => {
+    window.scrollTo(0, window.innerHeight)
+    const { size } = this.state
+    const response = await BaseAPI.getData(
+      `tour?size=${size}&page=${page}`
+    )
+    this.setState({ arrTours: response.data, total: response.total })
+  };
+
   onPanigate = async () => {
     const { page, arrTours, size } = this.state
     await this.setState({ isLoading: true })
@@ -64,7 +74,7 @@ class PackageList extends React.PureComponent {
       arrTours: listShow,
       total: total,
       isLoading: false,
-      page: page + 1,
+      page: page + 1
     })
   }
 
@@ -114,17 +124,17 @@ class PackageList extends React.PureComponent {
     const { lang } = this.props.locale
     const req = { lang: lang, keyword: keyword, size, page: 1 }
 
-    // const response = await BaseAPI.postData("tourgallery/search", req);
-    // this.setState({ list: response.data, total: response.total });
+    const response = await BaseAPI.postData('tour/search', req)
+    this.setState({ arrTours: response.data, total: response.total })
   }
 
-  render() {
+  render () {
     const { messages } = this.props.locale
     const { keyword } = this.state
     return (
-      <div className="package-list-container container">
+      <div className='package-list-container container'>
         <MyModal ref={this.ref} />
-        <h1 className="heading heading--main MB30">
+        <h1 className='heading heading--main MB30'>
           {messages.tourPackages || ''}
         </h1>
         <Row>
@@ -132,21 +142,21 @@ class PackageList extends React.PureComponent {
             xs={24}
             md={{
               span: 12,
-              offset: 12,
+              offset: 12
             }}
             lg={{
               span: 8,
-              offset: 16,
+              offset: 16
             }}
-            justify="end"
+            justify='end'
           >
             <Form onSubmit={this.onSubmitSearch}>
               <Form.Item>
                 <Input.Search
                   onChange={this.onInputChange}
                   onSearch={this.onSubmitSearch}
-                  enterButton={<i className="icon icon--search icon--14" />}
-                  size="large"
+                  enterButton={<i className='icon icon--search icon--14' />}
+                  size='large'
                   value={keyword}
                   placeholder={messages.pleaseEnterSearchWord || ''}
                 />
@@ -154,8 +164,32 @@ class PackageList extends React.PureComponent {
             </Form>
           </Col>
         </Row>
-        />
         <Row gutter={[30, 30]}>{this.renderListPackage()}</Row>
+        <Row justify='center' className='MT50 MB100 text text-center'>
+          <Col
+            style={{ marginLeft: 0 }}
+            xs={24}
+            md={{
+              span: 16,
+              offset: 3
+            }}
+            lg={{
+              span: 12,
+              offset: 6
+            }}
+          >
+            {this.state.arrTours.length === 0 ? (
+              ''
+            ) : (
+              <MyPagination
+                onChange={this.onPagination}
+                defaultCurrent={1}
+                total={this.state.total}
+                pageSize={this.state.size}
+              />
+            )}
+          </Col>
+        </Row>
       </div>
     )
   }
@@ -167,7 +201,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setHeader: bindActionCreators(PageReduxAction.setHeader, dispatch),
+    setHeader: bindActionCreators(PageReduxAction.setHeader, dispatch)
   }
 }
 
