@@ -80,12 +80,12 @@ class BookingPopup extends PureComponent {
               </div>
               <div className="booking-popup-info-item__value">{phone}</div>
             </div>
-            <div className="booking-popup-info-item">
+            {/* <div className="booking-popup-info-item">
               <div className="booking-popup-info-item__label">
                 {messages.totalPersonnel} :
               </div>
               <div className="booking-popup-info-item__value">2</div>
-            </div>
+            </div> */}
             <div className="booking-popup-info-item">
               <div className="booking-popup-info-item__label">
                 {messages.passport} :
@@ -94,12 +94,12 @@ class BookingPopup extends PureComponent {
                 {getLength(passportFile) > 0 ? 'Y' : 'N'}
               </div>
             </div>
-            <div className="booking-popup-info-item">
+            {/* <div className="booking-popup-info-item">
               <div className="booking-popup-info-item__label">
                 {messages.room} :
               </div>
               <div className="booking-popup-info-item__value">{room}</div>
-            </div>
+            </div> */}
             <div className="booking-popup-info-item">
               <div className="booking-popup-info-item__label">
                 {messages.inquireContents} :

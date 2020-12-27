@@ -1,71 +1,72 @@
-import React from "react";
+import React from 'react'
 import {
   getNameObject,
   calculateDiffDate,
   formatNumberBro,
   stripHtml,
-} from "common/function";
-import { connect } from "react-redux";
-import { Router } from "common/routes";
+} from 'common/function'
+import { connect } from 'react-redux'
+import { Router } from 'common/routes'
 // Assets
-import "./style.scss";
-import MyButton from "pages/Components/MyButton";
-import MyLabel from "pages/Components/MyLabel";
+import './style.scss'
+import MyButton from 'pages/Components/MyButton'
+import MyLabel from 'pages/Components/MyLabel'
 
 class TourPackage extends React.PureComponent {
   handleGoToDetail = (id) => () => {
-    Router.pushRoute(`/package-detail/${id}`).then(() => window.scrollTo(0, 0));
-  };
+    Router.pushRoute(`/package-detail/${id}`).then(() => window.scrollTo(0, 0))
+  }
 
   onInputChange = (e) => {
-    const { value } = e.target;
-    this.setState({ keyword: value });
+    const { value } = e.target
+    this.setState({ keyword: value })
 
-    if (!value) return this._fetchTourGallery();
-  };
+    if (!value) return this._fetchTourGallery()
+  }
 
   onSubmitSearch = async () => {
-    const { keyword, size } = this.state;
-    const { lang } = this.props.locale;
-    const req = { lang: lang, keyword: keyword, size, page: 1 };
-    const response = await BaseAPI.postData("tourgallery/search", req);
-    this.setState({ list: response.data, total: response.total });
-  };
+    const { keyword, size } = this.state
+    const { lang } = this.props.locale
+    const req = { lang: lang, keyword: keyword, size, page: 1 }
+    const response = await BaseAPI.postData('tourgallery/search', req)
+    this.setState({ list: response.data, total: response.total })
+  }
   onPagination = async (page) => {
-    window.scrollTo(0, window.innerHeight);
-    const { size } = this.state;
+    window.scrollTo(0, window.innerHeight)
+    const { size } = this.state
     const response = await BaseAPI.getData(
       `tourgallery?size=${size}&page=${page}`
-    );
-    this.setState({ list: response.data, total: response.total });
-  };
+    )
+    this.setState({ list: response.data, total: response.total })
+  }
 
   render() {
-    const { tour, id } = this.props;
-    const { lang, messages } = this.props.locale;
-    const { title, image, price, description, tourInfoList } = tour;
+    const { tour, id } = this.props
+    const { lang, messages } = this.props.locale
+    const { title, image, price, description, tourInfoList } = tour
     const tourDuration = calculateDiffDate(
       tourInfoList.duration.to,
       tourInfoList.duration.from,
-      "days"
-    );
+      'days'
+    )
 
     return (
       tour && (
         <div className="tour-package" onClick={this.handleGoToDetail(id)}>
-          {tour.isBest && <MyLabel type="black" text={messages.best || ""} />}
+          {tour.isBest && <MyLabel type="black" text={messages.best || ''} />}
           <div
             className="tour-package__photo"
             style={{
               background: `url(${image[0].image})`,
-              backgroundSize: "cover",
+              backgroundSize: 'cover',
             }}
           />
           <div className="tour-package__main">
             <div className="tour-package__header">
               <div className="tour-package__duration">
-                <i className="icon icon--clock icon--14 icon--space icon--inline icon--primary" />{" "}
-                {tourDuration} {messages.days || ""}
+                <i className="icon icon--clock icon--14 icon--space icon--inline icon--primary" />{' '}
+                {tourDuration != 0 ? tourDuration : tourDuration + 1}{' '}
+                {messages.days || ''}
               </div>
               <div className="tour-package__price">
                 $ {formatNumberBro(price)}
@@ -81,7 +82,7 @@ class TourPackage extends React.PureComponent {
             </div>
             <div className="tour-package__footer">
               <MyButton
-                title={messages.reservationDetail || ""}
+                title={messages.reservationDetail || ''}
                 isCard
                 onClick={this.handleGoToDetail(id)}
               />
@@ -89,10 +90,10 @@ class TourPackage extends React.PureComponent {
           </div>
         </div>
       )
-    );
+    )
   }
 }
 const mapStateToProps = (state) => ({
   locale: state.locale,
-});
-export default connect(mapStateToProps)(TourPackage);
+})
+export default connect(mapStateToProps)(TourPackage)

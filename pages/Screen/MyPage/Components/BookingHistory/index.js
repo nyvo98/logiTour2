@@ -42,7 +42,7 @@ class BookingHistory extends Component {
   async componentDidMount() {
     try {
       const response = await BaseAPI.getData('bookinghistory')
-
+      console.log(response)
       const bookingList = response.map((booking) => {
         booking.tourId = JSON.parse(booking.tourId)
         return booking
